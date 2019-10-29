@@ -23,7 +23,7 @@ Accelerometer "random walk" | `accelerometer_random_walk` | <img src="https://la
 1. With the IMU remaining still, record a ROS bag of the readings (we collected a bag for about 4 hours)
 2. Convert the ROS bag into a matlab mat file.
     * Use the included `bagconvert` ROS package to do this
-    * Example: `rosrun bagconvert bagconvert imu.bag /imu0`
+    * Example: `rosrun bagconvert bagconvert imu.bag imu0`
 3. Run the included matlab scripts to generate an allan deviation plot for the readings
     * If using the parallel version, it uses the matlab parallel toolbox
     * Need to specify the mat file that the bagconverter made, and the rate of IMU messages
@@ -37,6 +37,18 @@ Accelerometer "random walk" | `accelerometer_random_walk` | <img src="https://la
     * XSENS MTI-G-700
     * Tango Yellowstone Tablet
     * ASL-ETH VI-Sensor
+
+## Tips(Something need to be paied attention to)
+1. Use Matlab2018
+The first version of Matlab I use is 2017, although I complied the bagconvert successfully, the rosrun of bagconvert failed. Then, I changed to 2018, Just ok
+2. Find Matlab when compile the bagconvert
+change two line in FindMatlab.cmake 
+`find_program(MATLAB_EXE_PATH matlab`
+`PATHS /usr/local/MATLAB/R2018a/bin)`
+then
+`rm -rf build/ && catkin_make`
+3. Running time of allan 
+need to test
 
 ### Example Plot - XSENS MTI-G-700
 ![allan chart acceleration](data/results_20170908T182715_accel.png)

@@ -45,10 +45,9 @@ The first version of Matlab I use is 2017, although I complied the bagconvert su
 
 2. Find Matlab when compile the bagconvert
 
-change two line in FindMatlab.cmake
+change one line in FindMatlab.cmake
  
-`find_program(MATLAB_EXE_PATH matlab`
-`PATHS /usr/local/MATLAB/R2018a/bin)`
+`find_program(MATLAB_EXE_PATH matlab PATHS /usr/local/MATLAB/R2018a/bin)`
 
 then
 

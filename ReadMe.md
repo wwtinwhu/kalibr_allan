@@ -23,7 +23,8 @@ Accelerometer "random walk" | `accelerometer_random_walk` | <img src="https://la
 1. With the IMU remaining still, record a ROS bag of the readings (we collected a bag for about 4 hours)
 2. Convert the ROS bag into a matlab mat file.
     * Use the included `bagconvert` ROS package to do this
-    * Example: `rosrun bagconvert bagconvert imu.bag imu0`
+    * Example: `rosrun bagconvert bagconvert imu.bag /imu/data`
+    * imu.bag is your bag name; /imu/data is your imu topic
 3. Run the included matlab scripts to generate an allan deviation plot for the readings
     * If using the parallel version, it uses the matlab parallel toolbox
     * Need to specify the mat file that the bagconverter made, and the rate of IMU messages
@@ -41,7 +42,9 @@ Accelerometer "random walk" | `accelerometer_random_walk` | <img src="https://la
 ## Tips(Something need to be paied attention to)
 1. Use Matlab2018
 
-The first version of Matlab I use is 2017, although I complied the bagconvert successfully, the rosrun of bagconvert failed. Then, I changed to 2018, Just ok
+(1) The first version of Matlab I use is 2017, although I complied the bagconvert successfully, the rosrun of bagconvert failed. Then, I changed to 2018, Just ok
+
+(2) [Guide](https://www.cnblogs.com/iwuqing/p/9833292.html) to install Matlab2018 in ubuntu 
 
 2. Find Matlab when compile the bagconvert
 

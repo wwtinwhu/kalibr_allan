@@ -26,8 +26,10 @@ Accelerometer "random walk" | `accelerometer_random_walk` | <img src="https://la
     * Example: `rosrun bagconvert bagconvert imu.bag /imu/data`
     * imu.bag is your bag name; /imu/data is your imu topic
 3. Run the included matlab scripts to generate an allan deviation plot for the readings
-    * If using the parallel version, it uses the matlab parallel toolbox
+    * If using the parallel version, it uses the matlab parallel toolbox  
     * Need to specify the mat file that the bagconverter made, and the rate of IMU messages
+    * first run SCRIPT_allan_matparallel.m  to get the allan deviation result; second run SCRIPT_process_results.m to plot it 
+    * the path in two m file need to change 
 4. Interpret the generated charts to find noise values
     * Run the process results script
     * Will fit a -1/2 line to the left side of the allan plot
@@ -49,7 +51,7 @@ Accelerometer "random walk" | `accelerometer_random_walk` | <img src="https://la
 2. Find Matlab when compile the bagconvert
 
 change one line in FindMatlab.cmake
- 
+
 `find_program(MATLAB_EXE_PATH matlab PATHS /usr/local/MATLAB/R2018a/bin)`
 
 then
@@ -58,7 +60,13 @@ then
 
 3. Running time of allan 
 
-need to test
+4h data need more than 1 hour
+
+4. Sometimes the line fitting is not correct, you need draw the line on your own and read the parameter
+
+5. The spike problem I met like in this issue https://github.com/rpng/kalibr_allan/issues/12 
+
+   My solution is recollect the data and put IMU in more stable position.
 
 ### Example Plot - XSENS MTI-G-700
 ![allan chart acceleration](data/results_20170908T182715_accel.png)
